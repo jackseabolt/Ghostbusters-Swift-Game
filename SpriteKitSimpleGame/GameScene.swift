@@ -58,12 +58,17 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     override func didMove(to view: SKView) {
         label.text = "\(String(monstersDestroyed))/30"
         label.fontSize = 20
-        label.fontColor = SKColor.black
+        label.fontColor = SKColor.white
         label.position = CGPoint(x: size.width * 0.5, y: size.height * 0.9 )
         addChild(label)
         
-        backgroundColor = SKColor.white
-        player.position = CGPoint(x: size.width * 0.1, y: size.height * 0.5)
+        let background = SKSpriteNode(imageNamed: "main_background")
+        background.position = CGPoint(x: size.width/2, y: size.height/2)
+        background.zPosition = -1
+        addChild(background)
+        
+        backgroundColor = SKColor.black
+        player.position = CGPoint(x: size.width * 0.2, y: size.height * 0.5)
         addChild(player)
         physicsWorld.gravity = CGVector.zero
         physicsWorld.contactDelegate = self
@@ -73,7 +78,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
                 SKAction.wait(forDuration: 1.5)
             ])
         ))
-        let backgroundMusic = SKAudioNode(fileNamed: "Sounds/background-music-aac.caf")
+        let backgroundMusic = SKAudioNode(fileNamed: "Sounds/song.m4a")
         backgroundMusic.autoplayLooped = true
         addChild(backgroundMusic)
     }
@@ -88,8 +93,10 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     
     func addMonster() {
         // Create sprite
-        let monster = SKSpriteNode(imageNamed: "monster")
-        
+        var monster = SKSpriteNode(imageNamed: "ghost")
+        if(monstersDestroyed < 29) {
+            monster = SKSpriteNode(imageNamed: "monster")
+        }
         // Determine where to spawn the monster along the Y axis
         let actualY = random(min: monster.size.height/2, max: size.height - monster.size.height/2)
         

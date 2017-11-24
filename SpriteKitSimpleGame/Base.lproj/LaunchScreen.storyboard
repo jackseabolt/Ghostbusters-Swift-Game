@@ -17,13 +17,27 @@
                     <view key="view" contentMode="scaleToFill" id="Ze5-6b-2t3">
                         <rect key="frame" x="0.0" y="0.0" width="667" height="375"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="intro_background" translatesAutoresizingMaskIntoConstraints="NO" id="B5h-PI-fhk">
+                                <rect key="frame" x="0.0" y="0.0" width="667" height="375"/>
+                            </imageView>
+                        </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <constraints>
+                            <constraint firstAttribute="bottom" secondItem="B5h-PI-fhk" secondAttribute="bottom" id="Qrk-bN-cKE"/>
+                            <constraint firstItem="B5h-PI-fhk" firstAttribute="top" secondItem="Ze5-6b-2t3" secondAttribute="top" id="U8o-KN-9pf"/>
+                            <constraint firstAttribute="trailing" secondItem="B5h-PI-fhk" secondAttribute="trailing" id="dq5-Fn-vjP"/>
+                            <constraint firstItem="B5h-PI-fhk" firstAttribute="leading" secondItem="Ze5-6b-2t3" secondAttribute="leading" id="x8P-Yj-Cpg"/>
+                        </constraints>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="iYj-Kq-Ea1" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="53" y="375"/>
+            <point key="canvasLocation" x="52.623688155922046" y="373.60000000000002"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="intro_background" width="2048" height="1536"/>
+    </resources>
 </document>
