@@ -55,7 +55,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     let label = SKLabelNode(fontNamed: "Chalkduster")
     var monstersDestroyed = 0
     var monstersCreated = 0
-    let lastGhost = 30
+    let lastGhost = 50
     
     override func didMove(to view: SKView) {
         label.text = "\(String(monstersDestroyed))/\(lastGhost)"
