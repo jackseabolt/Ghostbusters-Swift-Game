@@ -54,9 +54,11 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     let player = SKSpriteNode(imageNamed: "player")
     let label = SKLabelNode(fontNamed: "Chalkduster")
     var monstersDestroyed = 0
+    var monstersCreated = 0
+    let lastGhost = 30
     
     override func didMove(to view: SKView) {
-        label.text = "\(String(monstersDestroyed))/30"
+        label.text = "\(String(monstersDestroyed))/\(lastGhost)"
         label.fontSize = 20
         label.fontColor = SKColor.white
         label.position = CGPoint(x: size.width * 0.5, y: size.height * 0.9 )
@@ -74,8 +76,8 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         physicsWorld.contactDelegate = self
         run(SKAction.repeatForever(
             SKAction.sequence([
-                SKAction.run(addMonster),
-                SKAction.wait(forDuration: 1.5)
+                SKAction.wait(forDuration: 1.5),
+                SKAction.run(addMonster)
             ])
         ))
         let backgroundMusic = SKAudioNode(fileNamed: "Sounds/song.m4a")
@@ -93,38 +95,44 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     
     func addMonster() {
         // Create sprite
-        var monster = SKSpriteNode(imageNamed: "ghost")
-        if(monstersDestroyed < 29) {
+        monstersCreated += 1
+        var monster: SKSpriteNode?
+        if(monstersCreated < lastGhost) {
             monster = SKSpriteNode(imageNamed: "monster")
+        } else if monstersCreated == lastGhost {
+            monster = SKSpriteNode(imageNamed: "ghost")
         }
-        // Determine where to spawn the monster along the Y axis
-        let actualY = random(min: monster.size.height/2, max: size.height - monster.size.height/2)
         
-        // Position the monster slightly off-screen along the right edge,
-        // and along a random position along the Y axis as calculated above
-        monster.position = CGPoint(x: size.width + monster.size.width/2, y: actualY)
-        
-        // Add the monster to the scene
-        addChild(monster)
-        
-        monster.physicsBody = SKPhysicsBody(rectangleOf: monster.size)
-        monster.physicsBody?.isDynamic = true
-        monster.physicsBody?.categoryBitMask = PhysicsCategory.Monster
-        monster.physicsBody?.contactTestBitMask = PhysicsCategory.Projectile
-        monster.physicsBody?.collisionBitMask = PhysicsCategory.None
-        
-        // Determine speed of the monster
-        let actualDuration = random(min: CGFloat(2.0), max: CGFloat(4.0))
-        
-        // Create the actions
-        let actionMove = SKAction.move(to: CGPoint(x: -monster.size.width/2, y: actualY), duration: TimeInterval(actualDuration))
-        let actionMoveDone = SKAction.removeFromParent()
-        let loseAction = SKAction.run() {
-            let reveal = SKTransition.flipHorizontal(withDuration: 0.5)
-            let gameOverScene = GameOverScene(size: self.size, won: false)
-            self.view?.presentScene(gameOverScene, transition: reveal)
+        if let monster = monster {
+            // Determine where to spawn the monster along the Y axis
+            let actualY = random(min: monster.size.height/2, max: size.height - monster.size.height/2)
+            
+            // Position the monster slightly off-screen along the right edge,
+            // and along a random position along the Y axis as calculated above
+            monster.position = CGPoint(x: size.width + monster.size.width/2, y: actualY)
+            
+            // Add the monster to the scene
+            addChild(monster)
+            
+            monster.physicsBody = SKPhysicsBody(rectangleOf: monster.size)
+            monster.physicsBody?.isDynamic = true
+            monster.physicsBody?.categoryBitMask = PhysicsCategory.Monster
+            monster.physicsBody?.contactTestBitMask = PhysicsCategory.Projectile
+            monster.physicsBody?.collisionBitMask = PhysicsCategory.None
+            
+            // Determine speed of the monster
+            let actualDuration = random(min: CGFloat(2.0), max: CGFloat(4.0))
+            
+            // Create the actions
+            let actionMove = SKAction.move(to: CGPoint(x: -monster.size.width/2, y: actualY), duration: TimeInterval(actualDuration))
+            let actionMoveDone = SKAction.removeFromParent()
+            let loseAction = SKAction.run() {
+                let reveal = SKTransition.flipHorizontal(withDuration: 0.5)
+                let gameOverScene = GameOverScene(size: self.size, won: false)
+                self.view?.presentScene(gameOverScene, transition: reveal)
+            }
+            monster.run(SKAction.sequence([actionMove, loseAction, actionMoveDone]))
         }
-        monster.run(SKAction.sequence([actionMove, loseAction, actionMoveDone]))
     }
     
     override func touchesEnded(_ touches: Set<UITouch>, with event: UIEvent?) {
@@ -178,10 +186,10 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         monstersDestroyed += 1
         
         
-        label.text = "\(String(monstersDestroyed))/30"
+        label.text = "\(String(monstersDestroyed))/\(lastGhost)"
         
         print(monstersDestroyed)
-        if (monstersDestroyed >= 30) {
+        if (monstersDestroyed >= lastGhost) {
             let reveal = SKTransition.flipHorizontal(withDuration: 0.5)
             let gameOverScene = GameOverScene(size: self.size, won: true)
             self.view?.presentScene(gameOverScene, transition: reveal)
