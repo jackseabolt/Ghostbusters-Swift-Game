@@ -31,7 +31,7 @@ For local use
 git clone https://github.com/jackseabolt/Ghostbusters-Swift-Game.git
 
 # Change directory
-Ghostbusters-Swift-Game
+cd Ghostbusters-Swift-Game
 
 # Download Xcode from the iTunes store
 # Open file in Xcode
