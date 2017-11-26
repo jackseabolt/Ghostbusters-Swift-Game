@@ -20,8 +20,8 @@ git clone https://github.com/jackseabolt/Ghostbusters-Swift-Game.git
 # Change directory
 Ghostbusters-Swift-Game
 
-# Download xcode from the iTunes store
-# Open file in xcode
+# Download Xcode from the iTunes store
+# Open file in Xcode
 # run the game in the xcode simulator by clicking the play button
 
 ```
