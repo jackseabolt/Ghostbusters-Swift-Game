@@ -10,6 +10,8 @@ How it Works
 ------------
 You have joined the Ghostbusters! There has been suspicious activity reported in the haunted graveyard. Shoot all the ghosts that appear on the right side of the screen. If a ghost reaches the left side of the screen without being shot, you die! So aim carefully!
 
+<img src="http://seaboltdesign.com/images/ghostbusters.png">
+
 For local use
 --------
 
