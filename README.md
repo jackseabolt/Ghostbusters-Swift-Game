@@ -20,7 +20,7 @@ To shoot your proton gun, click the screen in the direction you want to aim. Goo
 
 How it's made
 --------
-This game was constructed using Xcode version 9.1 and SpriteKit. 
+This game was constructed using Swift version 4.0.2, Xcode version 9.1 and SpriteKit. 
 
 
 For local use
