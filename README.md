@@ -1,5 +1,5 @@
-<p align="center"><img src="/img/logo.jpg" height="120" /></p>
-<h1>FRONT-END</h1>
+<p align="center"><img src="https://upload.wikimedia.org/wikipedia/en/thumb/e/ee/Ghostbusters_logo.svg/1200px-Ghostbusters_logo.svg.png" height="120" /></p>
+<h1>GHOSTBUSTERS SWIFT GAME</h1>
 <p><em>This document provides general information on my Ghostbusters iOS game. 
 
 Why Ghostbusters
@@ -48,14 +48,13 @@ For local use
 
 ```bash
 # Clone repository
-git clone https://github.com/jackseabolt/buzz-kill-frontend.git
+git clone https://github.com/jackseabolt/Ghostbusters-Swift-Game.git
 
 # Change directory
-cd buzz-kill-frontend
+Ghostbusters-Swift-Game
 
-# Install NPM dependencies
-npm install
+# Download xcode from the iTunes store
+# Open file in xcode
+# run the game in the xcode simulator by clicking the play button
 
-# Start the server
-npm start
 ```
