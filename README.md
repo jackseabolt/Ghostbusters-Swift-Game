@@ -1,8 +1,8 @@
 <p align="center"><img src="https://upload.wikimedia.org/wikipedia/en/thumb/e/ee/Ghostbusters_logo.svg/1200px-Ghostbusters_logo.svg.png" height="300" /></p>
 <br />
-<div style="text-align: center">
-  <h1 style="text-align: center">GHOSTBUSTERS SWIFT GAME</h1>
-</div>
+
+  <h1 align="center">GHOSTBUSTERS SWIFT GAME</h1>
+
 <p><em>This document provides general information on my Ghostbusters iOS game. 
 
 Why Ghostbusters
