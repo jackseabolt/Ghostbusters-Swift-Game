@@ -38,3 +38,5 @@ Ghostbusters-Swift-Game
 # Run the game in the Xcode simulator by clicking the play button
 
 ```
+ 
+
