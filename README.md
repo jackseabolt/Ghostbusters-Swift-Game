@@ -17,6 +17,12 @@ To shoot your proton gun, click the screen in the direction you want to aim. Goo
 
 <img src="http://seaboltdesign.com/images/ghostbusters.png">
 
+
+How it's made
+--------
+This game was constructed using Xcode version 9.1 and SpriteKit. 
+
+
 For local use
 --------
 
