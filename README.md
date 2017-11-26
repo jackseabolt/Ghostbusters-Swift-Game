@@ -35,6 +35,6 @@ Ghostbusters-Swift-Game
 
 # Download Xcode from the iTunes store
 # Open file in Xcode
-# run the game in the xcode simulator by clicking the play button
+# Run the game in the Xcode simulator by clicking the play button
 
 ```
